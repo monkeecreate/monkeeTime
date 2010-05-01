@@ -21,28 +21,29 @@ $(document).ready(function() {
 	else {
 		getAllItems();
 		
-		$(".delete").click(function() {
-			$(this.nodeName + " span").dialog({
-				resizable: false,
-				height: 140,
-				modal: true,
-				show: 'fold',
-				buttons: {
-					'Delete Time': function() {
-						localStorage.removeItem($(this).attr("rel"));
-						getAllItems();
-						$(this).dialog('close');
-					},
-					Cancel: function() {
-						$(this).dialog('close');
-					}
-				}
-			});
-		});
+		// $(".delete").click(function() {
+		// 	$(this).find("span").dialog({
+		// 		resizable: false,
+		// 		height: 140,
+		// 		modal: true,
+		// 		show: 'fold',
+		// 		buttons: {
+		// 			'Delete Time': function() {
+		// 				localStorage.removeItem($(this).attr("rel"));
+		// 				getAllItems();
+		// 				$(this).dialog('close');
+		// 			},
+		// 			Cancel: function() {
+		// 				$(this).dialog('close');
+		// 			}
+		// 		}
+		// 	});
+		// });
 		
 		$("#logTime").click(function(){
+			var itemId = localStorage.length+1;
+			
 			var values = new Array();
-
 			var name = $("#name").val();
 			var hours = $("#hours").val();
 			var date = $("#date").val();
@@ -54,14 +55,15 @@ $(document).ready(function() {
 			name = name.replace(/&/,"&amp;");
 			name = name.replace(/</,"&lt;");
 			name = name.replace(/>/,"&gt;");
-
+			
+			values.push(name);
 			values.push(hours);
 			values.push(date);
 
 			if (name != "" && hours != "" && date != "") {
 
 				try {
-					localStorage.setItem(name, values.join(';'));
+					localStorage.setItem(itemId, values.join(';'));
 				} catch (e) {
 					if (e == QUOTA_EXCEEDED_ERR) {
 						alert('Quota exceeded!');
@@ -145,10 +147,11 @@ function getAllItems() {
     	var logitem = myArray[j];
 		var values = localStorage.getItem(logitem);
 		values = values.split(";");
-		var hours = values[0];
-		var date = values[1];
+		var project = values[0];
+		var hours = values[1];
+		var date = values[2];
 	
-		timeLog += '<li><strong>' + logitem + '</strong>: ' + hours + ' hours <span class="delete">&times;<span class="hidden" title="Delete Time" rel="' + logitem + '">Are you sure you want to delete ' + logitem + ' from the log?</span></span> <span class="date">' + date + '</span></li>'
+		timeLog += '<li><strong>' + project + '</strong>: ' + hours + ' hours <span class="delete">&times;<span class="hidden" title="Delete Time" id="' + logitem + '">Are you sure you want to delete ' + project + ' from the log?</span></span> <span class="date">' + date + '</span></li>';
 		
 		totalHours = totalHours + parseInt(hours);
    	}
@@ -165,6 +168,39 @@ function getAllItems() {
 
 	//remove bottom border of last li
 	$("ul li:last-child").css("border", 0);
+	
+	/**
+	 * deleteItemDialog
+	 *
+	 * Displays the dialog to delete a single item
+	 * and deletes it if successfull.
+	 */
+	var deleteItemDialog = new Array();
+	$(".delete").each(function() {
+		var id = $(this).find("span").attr("id");
+		deleteItemDialog[id] = $("#"+id).dialog({
+			autoOpen: false,
+			resizable: false,
+			height: 140,
+			modal: true,
+			show: 'fold',
+			buttons: {
+				'Delete Time': function() {
+					localStorage.removeItem(id);
+					getAllItems();
+					$(this).dialog("close");
+				},
+				Cancel: function() {
+					$(this).dialog("close");
+				}
+			}
+		});
+
+		$(this).click(function(){
+			deleteItemDialog[id].dialog("open");
+			return false;
+		});
+	});
 }
 
 $(function() {
