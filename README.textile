@@ -1,0 +1,9 @@
+h1. monkeeTime
+
+A web app experiment in using localStorage(). Check out the demo at "monkeeCreate.com":http://time.monkeecreate.com
+
+h2. Other Info
+
+Developed by "James Fleeting":http://jamesfleeting.com of monkeeCreate.com.
+
+This project was meant as a learning experience for localStorage(). Feel free to take the code and do with it as you wish, its 100% opensource.

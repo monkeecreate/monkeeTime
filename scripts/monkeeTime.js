@@ -86,8 +86,6 @@ $(document).ready(function() {
 						}
 					}
 				});
-			
-		   		//alert('Nothing to add!');
 		   }
 		});
 		
