@@ -14,7 +14,7 @@
 body {
 	background: rgb(197,204,211);
 	color: rgb(76,86,108);
-	font: 17px/22px Helvetica, Arial, Verdana, sans-serif;
+	font: 75% Helvetica, Arial, Verdana, sans-serif;
 }
 
 header, section, article, aside, footer {
@@ -71,7 +71,7 @@ input[type=text] {
 	border-radius: 5px;
 }
 
-input[type=number], input[type=date] {
+input[type=number], #date {
 	width: 75px;
 	padding: 6px 5px;
 	border: 1px solid #989898;
@@ -90,6 +90,7 @@ section {
 	margin: 25px auto 75px;
 	text-align: center;
 	overflow: hidden;
+	font-size: 14px;
 }
 
 section header {
@@ -154,7 +155,7 @@ li.empty {
 footer {
 	background: -webkit-gradient(linear, left top, left bottom, from(#bcc6d0), to(#8c9aaa));
 	background: -moz-linear-gradient(top, #bcc6d0, #8c9aaa);
-	font-size: 0.7em;
+	font-size: 1.0em;
 	width: 100%;
 	padding: 12px 0 10px;
 	position: fixed;

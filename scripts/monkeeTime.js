@@ -21,21 +21,23 @@ $(document).ready(function() {
 	else {
 		getAllItems();
 		
-		$("#theLog").click(function(e) {
-			var target = e.target;
-
-			if($(target).hasClass("delete")) { //the delete icon
-				var answer = confirm("Delete item: " + $(target).attr("rel") + "?");
-
-				if (answer) {
-					localStorage.removeItem($(target).attr("rel")); //delete item from localStorage
-					getAllItems(); //update the log
+		$(".delete").click(function() {
+			$(this.nodeName + " span").dialog({
+				resizable: false,
+				height: 140,
+				modal: true,
+				show: 'fold',
+				buttons: {
+					'Delete Time': function() {
+						localStorage.removeItem($(this).attr("rel"));
+						getAllItems();
+						$(this).dialog('close');
+					},
+					Cancel: function() {
+						$(this).dialog('close');
+					}
 				}
-			} else {
-				/*
-				 * TODO: If item is clicked, highlight all items with the same project name.
-				 */
-			}
+			});
 		});
 		
 		$("#logTime").click(function(){
@@ -70,10 +72,22 @@ $(document).ready(function() {
 		   		$("#name").val("");
 				$("#hours").val("");
 				$("#date").val("");
-		   		getAllItems(); //updaet the log
+		   		getAllItems();
 		   }
 		   else {
-		   		alert('Nothing to add!');
+				$("#emptyFields-message").dialog({
+					resizable: false,
+					height:140,
+					modal: true,
+					show: 'fold',
+					buttons: {
+						Ok: function() {
+							$(this).dialog('close');
+						}
+					}
+				});
+			
+		   		//alert('Nothing to add!');
 		   }
 		});
 		
@@ -82,10 +96,11 @@ $(document).ready(function() {
 				resizable: false,
 				height:140,
 				modal: true,
+				show: 'fold',
 				buttons: {
 					'Delete all items': function() {
 						localStorage.clear();
-						getAllItems(); //update the log
+						getAllItems();
 						$(this).dialog('close');
 					},
 					Cancel: function() {
@@ -93,13 +108,6 @@ $(document).ready(function() {
 					}
 				}
 			});
-			
-			//var answer = confirm("Delete all items?");
-
-			// if (answer) {
-			// 	localStorage.clear();
-			// 	getAllItems(); //update the log
-			// }
 		});
 		
 		$("#aboutButton").click(function() {
@@ -142,7 +150,7 @@ function getAllItems() {
 		var hours = values[0];
 		var date = values[1];
 	
-		timeLog += '<li><strong>' + logitem + '</strong>: ' + hours + ' hours <span class="delete" rel="' + logitem + '">&times;</span> <span class="date">' + date + '</span></li>'
+		timeLog += '<li><strong>' + logitem + '</strong>: ' + hours + ' hours <span class="delete">&times;<span class="hidden" title="Delete Time" rel="' + logitem + '">Are you sure you want to delete ' + logitem + ' from the log?</span></span> <span class="date">' + date + '</span></li>'
 		
 		totalHours = totalHours + parseInt(hours);
    	}
@@ -160,3 +168,11 @@ function getAllItems() {
 	//remove bottom border of last li
 	$("ul li:last-child").css("border", 0);
 }
+
+$(function() {
+	$('#date').datepicker({
+		showButtonPanel: true,
+		showAnim: 'fold',
+		dateFormat: 'm/dd/yy'
+	});
+});

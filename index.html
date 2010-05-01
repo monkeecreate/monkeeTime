@@ -9,9 +9,10 @@
 	<link rel="apple-touch-icon-precomposed" href="monkeeTime.png">
 	<link rel="stylesheet" href="css/reset.css" type="text/css">	
 	<link rel="stylesheet" href="css/screen.css" type="text/css">
+	<link rel="stylesheet" href="scripts/ui-themes/smoothness/jquery-ui-1.8.custom.css" type="text/css">
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery-ui-1.8.custom.min.js"></script>
 	<script src="scripts/monkeeTime.js"></script>
 </head> 
 <body>
@@ -29,8 +30,12 @@
 		<p><button type="button" id="closeButton">Close</button></p>
 	</div>
 	
-	<div id="clearLog-message" class="hidden">
-		Delete all items?
+	<div id="clearLog-message" title="Clear Log" class="hidden">
+		Are you sure you want to delete all items in the log?
+	</div>
+	
+	<div id="emptyFields-message" title="Missing Required Fields" class="hidden">
+		You must provide a project, number of hours and a date to log your time.
 	</div>
 	
 	<header>
@@ -40,7 +45,7 @@
 		<form id="logForm" onsubmit="addNewItem()">
 			<input type="text" name="name" id="name" autocorrect placeholder="Project Name">
 			<input type="number" name="hours" id="hours" placeholder="Hours">
-			<input type="date" name="date" id="date" placeholder="Date">
+			<input type="text" name="date" id="date" placeholder="Date">
 			<button type="button" id="logTime">Log Time</button>
 		</form>
 	</header>
