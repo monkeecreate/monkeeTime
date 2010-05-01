@@ -169,12 +169,16 @@ function getAllItems() {
 	//remove bottom border of last li
 	$("ul li:last-child").css("border", 0);
 	
-	/**
-	 * deleteItemDialog
-	 *
-	 * Displays the dialog to delete a single item
-	 * and deletes it if successfull.
-	 */
+	deleteItem(); //bind the dialogs to each item in the updated list.
+}
+
+/**
+ * deleteItem
+ *
+ * Displays the dialog to delete a single item
+ * and deletes it if successfull.
+ */
+function deleteItem() {
 	var deleteItemDialog = new Array();
 	$(".delete").each(function() {
 		var id = $(this).find("span").attr("id");
