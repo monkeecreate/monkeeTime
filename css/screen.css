@@ -1,0 +1,313 @@
+/*
+ * 
+ * Find more about this app by visiting
+ * http://miniapps.co.uk/
+ *
+ * Copyright (c) 2010 Alex Gibson, http://miniapps.co.uk/
+ * Released under MIT license
+ * http://miniapps.co.uk/license/
+ *
+ * Version 1.5 - Last updated: March 24 2010
+ * 
+ */
+
+body {
+	background: rgb(197,204,211);
+	color: rgb(76,86,108);
+	font: 17px/22px Helvetica, Arial, Verdana, sans-serif;
+}
+
+header, section, article, aside, footer {
+	display: block;
+}
+
+a:link, a:visited, a:hover, a:active, a:focus { 
+	color: rgb(76,86,108);
+	text-decoration: underline; 
+}
+
+/* @group header */
+
+header {
+	width: 100%;
+	background: #73839c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#b2bcc8), to(#73839c));
+	background: -moz-linear-gradient(top, #b2bcc8, #73839c);
+	
+}
+
+header h1 {
+	font: 28px Helvetica, Arial, Verdana, sans-serif;
+	color: rgb(255,255,255);
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 0 6px;
+	text-shadow: rgba(0, 0, 0, 0.6) 2px 2px 0;
+}
+
+#aboutButton {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+header form {
+	width: 100%;
+	padding: 15px 0;
+	background: #cecdd2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#cecdd2));
+	background: -moz-linear-gradient(top, #fff, #cecdd2);
+	border-bottom: 1px solid rgb(0,0,0);
+	border-top: 1px solid rgb(0,0,0);
+	text-align: center;
+}
+
+input[type=text] {
+	width: 150px;
+	padding: 6px 5px;
+	border: 1px solid #989898;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
+}
+
+input[type=number], input[type=date] {
+	width: 75px;
+	padding: 6px 5px;
+	border: 1px solid #989898;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
+}
+
+/* @end */
+
+/* @group section */
+
+section {
+	background: rgb(197,204,211);
+	width: 430px;
+	margin: 25px auto 75px;
+	text-align: center;
+	overflow: hidden;
+}
+
+section header {
+	width: 100%;
+	background: none;
+	text-align: left;
+}
+
+ul {
+	margin: 17px auto 7px;
+	list-style-type: none;
+	background: #fff;
+	border: 1px solid #bbb;
+	-webkit-border-radius: 15px; 
+	-moz-border-radius: 15px; 
+	border-radius: 15px;
+	width:430px;
+}
+
+li {
+	line-height: 44px;
+	padding: 0 0 0 10px;
+	color: #000;
+	text-align: left;
+	border-bottom: 1px solid #bbb;
+	overflow: hidden;
+}
+
+li.empty {
+	text-align: center;
+}
+
+#theLog span.date {
+	float: right;
+	display: inline;
+	font-size: 11px;
+	padding: 2px 0 0 15px;
+}
+
+#theLog span.delete {
+	float:right;
+	display: inline;
+	padding: 0 10px 0 15px;
+	font-size: 24px;
+	color: #808080;
+	cursor: pointer;
+}
+
+#theLog span.delete:hover, #theLog span.delete:focus {
+	color: #000;
+}
+
+#clearLog {
+	float: right;
+	display: inline;
+}
+
+/* @end */
+
+/* @group footer */
+
+footer {
+	background: -webkit-gradient(linear, left top, left bottom, from(#bcc6d0), to(#8c9aaa));
+	background: -moz-linear-gradient(top, #bcc6d0, #8c9aaa);
+	font-size: 0.7em;
+	width: 100%;
+	padding: 12px 0 10px;
+	position: fixed;
+	bottom: 0;
+	margin: 20px auto 0;
+	text-align: center;
+	border-top: 1px solid #2b334f;
+}
+
+/* @end */
+
+#about {
+	background: rgba(0, 0, 0, 0.85);
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	z-index: 100;
+	display: none;
+	padding: 75px 0 0;
+	text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;
+    font-size: 15px;
+}
+
+#about p {
+	margin: 0 0 12px;
+}
+
+#about a:link, #about a:active, #about a:visited {
+	color: #fff;
+}
+
+/* @group misc */
+
+.hidden {
+	display: none;
+}
+
+.right {
+	float: right;
+	display: inline;
+}
+
+.left {
+	float: left;
+	display: inline;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+button {
+	background: #4a6c9b;
+	background: -webkit-gradient(linear, left top, left bottom, from(#8ea4c1), to(#4a6c9b));
+	background: -moz-linear-gradient(top, #8ea4c1, #4a6c9b);
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	border: 1px solid #2B3942;
+	height: 28px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+	cursor: pointer;
+}
+
+button:hover, button:focus {
+	background: #4a6c9b;
+	background: -webkit-gradient(linear, left bottom, left top, from(#8ea4c1), to(#4a6c9b));
+	background: -moz-linear-gradient(top, #8ea4c1, #4a6c9b);
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	border: 1px solid #2B3942;
+	height: 28px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+	cursor: pointer;
+}
+
+button#closeButton {
+	background: -webkit-gradient(linear, left top, left bottom, from(#777), to(#242424));
+	background: -moz-linear-gradient(top, #777, #242424);
+	border: 3px solid #010d02;
+	font-size: 18px;
+	width: 430px;
+	height: 40px;
+	text-align: center;
+	margin: 35px 0 0;
+}
+
+button#closeButton:hover, button#closeButton:focus {
+	background: -webkit-gradient(linear, left top, left bottom, from(#242424), to(#777));
+	background: -moz-linear-gradient(top, #242424, #777);
+}
+
+/* @end */
+
+/* @group iPhone */
+
+/* iPhone Portrait */
+
+@media screen and (max-width: 320px) {
+
+p {
+	width: 300px;
+}
+
+input[type=text] {
+	width: 220px;
+}
+
+ul {
+	width: 300px;
+}
+
+fieldset {
+	width: 320px;
+}
+
+}
+
+/* iPhone Landscape */
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+
+p {
+	width: 460px;
+}
+
+input[type=text] {
+	width: 380px;
+}
+
+ul {
+	width: 460px;
+}
+
+fieldset {
+	width: 480px;
+}
+
+}
+
+/* @end */

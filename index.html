@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html lang="en" manifest="monkeeTime.manifest"> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<title>monkeeTime by monkeeCreate</title>
+
+	<link rel="apple-touch-startup-image" href="splashscreen.png">
+	<link rel="apple-touch-icon-precomposed" href="monkeeTime.png">
+	<link rel="stylesheet" href="css/reset.css" type="text/css">	
+	<link rel="stylesheet" href="css/screen.css" type="text/css">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+	<script src="scripts/monkeeTime.js"></script>
+</head> 
+<body>
+	<div id="about" class="hidden">
+		<p><strong>monkeeTime</strong><br />
+			Version 1.0<br />
+            Developed by <a href="http://jamesfleeting.com" title="James Fleeting">James Fleeting</a></p>
+       	<p><em>Easily log time spent on projects using a clean interface.<br />
+			Track your time anywhere using the desktop or iPhone.</em></p>
+		<p>This web app requires the use of a modern browser including:<br />
+			Safari, Safari Mobile, Chrome, Firefox or IE8.</p>
+        <p>
+            <a href="http://twitter.com/monkeecreate" title="@monkeeCreate" target="_blank">@monkeeCreate on Twitter</a>
+        </p>
+		<p><button type="button" id="closeButton">Close</button></p>
+	</div>
+	
+	<div id="clearLog-message" class="hidden">
+		Delete all items?
+	</div>
+	
+	<header>
+		<button type="button" id="aboutButton">About</button>
+		<h1>monkeeTime</h1>
+		
+		<form id="logForm" onsubmit="addNewItem()">
+			<input type="text" name="name" id="name" autocorrect placeholder="Project Name">
+			<input type="number" name="hours" id="hours" placeholder="Hours">
+			<input type="date" name="date" id="date" placeholder="Date">
+			<button type="button" id="logTime">Log Time</button>
+		</form>
+	</header>
+	
+	<section>
+		<header>
+			<p>Total: <span>0</span> hours</p>
+		</header>
+	
+		<ul id="theLog">
+			<li class="empty">Loading&hellip;</li>
+		</ul>
+		<button type="button" id="clearLog">Clear Log</button>
+	</section>
+	
+	<footer>
+		<p>Created by <a href="http://jamesfleeting.com" title="James Fleeting">James Fleeting</a> from <a href="http://monkeecreate.com" title="monkeeCreate">monkeeCreate.com</a></p>
+	</footer>
+</body> 
+</html> 
