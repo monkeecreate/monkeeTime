@@ -21,25 +21,6 @@ $(document).ready(function() {
 	else {
 		getAllItems();
 		
-		// $(".delete").click(function() {
-		// 	$(this).find("span").dialog({
-		// 		resizable: false,
-		// 		height: 140,
-		// 		modal: true,
-		// 		show: 'fold',
-		// 		buttons: {
-		// 			'Delete Time': function() {
-		// 				localStorage.removeItem($(this).attr("rel"));
-		// 				getAllItems();
-		// 				$(this).dialog('close');
-		// 			},
-		// 			Cancel: function() {
-		// 				$(this).dialog('close');
-		// 			}
-		// 		}
-		// 	});
-		// });
-		
 		$("#logTime").click(function(){
 			var itemId = localStorage.length+1;
 			
@@ -52,9 +33,9 @@ $(document).ready(function() {
 			name = name.replace(/(<([^>]+)>)/ig, "");
 
 			//encode special characters.
-			name = name.replace(/&/,"&amp;");
-			name = name.replace(/</,"&lt;");
-			name = name.replace(/>/,"&gt;");
+			// name = name.replace(/&/,"&amp;");
+			// name = name.replace(/</,"&lt;");
+			// name = name.replace(/>/,"&gt;");
 			
 			values.push(name);
 			values.push(hours);
