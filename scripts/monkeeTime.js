@@ -22,12 +22,13 @@ $(document).ready(function() {
 		getAllItems();
 		
 		$("#logForm").submit(function(){
-			var itemId = localStorage.length+1;
+			var newDate = new Date();
+			var itemId = newDate.getTime();
 			
 			var values = new Array();
-			var name = $("#name").val();
-			var hours = $("#hours").val();
-			var date = $("#date").val();
+			var name = $("input[name='project']").val();
+			var hours = $("input[name='hours']").val();
+			var date = $("input[name='date']").val();
 
 			//strip html tags.
 			name = name.replace(/(<([^>]+)>)/ig, "");

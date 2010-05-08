@@ -215,7 +215,7 @@ em {
 	font-style: italic;
 }
 
-button {
+input[type=submit], button {
 	background: #4a6c9b;
 	background: -webkit-gradient(linear, left top, left bottom, from(#8ea4c1), to(#4a6c9b));
 	background: -moz-linear-gradient(top, #8ea4c1, #4a6c9b);
@@ -231,7 +231,7 @@ button {
 	cursor: pointer;
 }
 
-button:hover, button:focus {
+input[type=submit]:hover, input[type=submit]:focus, button:hover, button:focus {
 	background: #4a6c9b;
 	background: -webkit-gradient(linear, left bottom, left top, from(#8ea4c1), to(#4a6c9b));
 	background: -moz-linear-gradient(top, #8ea4c1, #4a6c9b);
