@@ -9,7 +9,7 @@
  * Developed by James Fleeting <twofivethreetwo@gmail.com>
  * Another project from monkeeCreate <http://monkeecreate.com>
  *
- * Version 1.0 - Last updated: May 1 2010
+ * Version 1.0 - Last updated: May 7 2010
  *
  * Inspired by Checklist from http://miniapps.co.uk/
  */
@@ -21,7 +21,7 @@ $(document).ready(function() {
 	else {
 		getAllItems();
 		
-		$("#logTime").click(function(){
+		$("#logForm").submit(function(){
 			var itemId = localStorage.length+1;
 			
 			var values = new Array();
