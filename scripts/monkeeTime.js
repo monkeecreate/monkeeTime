@@ -24,26 +24,25 @@ $(document).ready(function() {
 		$("#logForm").submit(function(){
 			var newDate = new Date();
 			var itemId = newDate.getTime();
-			
+	
 			var values = new Array();
-			var name = $("input[name='project']").val();
+			var project = $("input[name='project']").val();
 			var hours = $("input[name='hours']").val();
 			var date = $("input[name='date']").val();
 
 			//strip html tags.
-			name = name.replace(/(<([^>]+)>)/ig, "");
+			project = project.replace(/(<([^>]+)>)/ig, "");
 
 			//encode special characters.
 			// name = name.replace(/&/,"&amp;");
 			// name = name.replace(/</,"&lt;");
 			// name = name.replace(/>/,"&gt;");
-			
-			values.push(name);
+	
+			values.push(project);
 			values.push(hours);
 			values.push(date);
 
-			if (name != "" && hours != "" && date != "") {
-
+			if (project != "" && hours != "" && date != "") {
 				try {
 					localStorage.setItem(itemId, values.join(';'));
 				} catch (e) {
@@ -52,13 +51,8 @@ $(document).ready(function() {
 					}
 				}
 
-				//clear input values
-		   		$("#name").val("");
-				$("#hours").val("");
-				$("#date").val("");
 		   		getAllItems();
-		   }
-		   else {
+		   } else {
 				$("#emptyFields-message").dialog({
 					resizable: false,
 					height:140,
@@ -112,21 +106,14 @@ function getAllItems() {
    	var timeLog = "";
   	var myArray = [];
    	var i = 0;
-   	var j = 0;
 	var logLength = localStorage.length-1;
-	var totalHours = 0.0;
+	var totalHours = 0.0;	
 	
-   	//push each item into an array
-   	for (i = 0; i <= logLength; i++) {
-
-    	var item = localStorage.key(i);
-    	myArray.push(item);
-    }
-
     //process each item and create a list item
-    for (j = 0; j <= logLength; j++) {
+    for (i = 0; i <= logLength; i++) {
 
-    	var logitem = myArray[j];
+		//var logitem = myArray[j];
+		var logitem = localStorage.key(i);
 		var values = localStorage.getItem(logitem);
 		values = values.split(";");
 		var project = values[0];
