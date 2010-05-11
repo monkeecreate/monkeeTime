@@ -9,7 +9,7 @@
  * Developed by James Fleeting <twofivethreetwo@gmail.com>
  * Another project from monkeeCreate <http://monkeecreate.com>
  *
- * Version 1.0 - Last updated: May 7 2010
+ * Version 1.0 - Last updated: May 11 2010
  *
  * Inspired by Checklist from http://miniapps.co.uk/
  */
@@ -42,17 +42,7 @@ $(document).ready(function() {
 			values.push(hours);
 			values.push(date);
 
-			if (project != "" && hours != "" && date != "") {
-				try {
-					localStorage.setItem(itemId, values.join(';'));
-				} catch (e) {
-					if (e == QUOTA_EXCEEDED_ERR) {
-						alert('Quota exceeded!');
-					}
-				}
-
-		   		getAllItems();
-		   } else {
+			if (project == "" || project == "Project Name" || hours == "" || hours == "Hours" || date == "" || date == "Date") {	
 				$("#emptyFields-message").dialog({
 					resizable: false,
 					height:140,
@@ -64,7 +54,17 @@ $(document).ready(function() {
 						}
 					}
 				});
-		   }
+			} else {
+				try {
+					localStorage.setItem(itemId, values.join(';'));
+				} catch (e) {
+					if (e == QUOTA_EXCEEDED_ERR) {
+						alert('Quota exceeded!');
+					}
+				}
+
+			  	getAllItems();
+			}
 		});
 		
 		$("#clearLog").click(function() {
@@ -104,30 +104,26 @@ $(document).ready(function() {
  */
 function getAllItems() {
    	var timeLog = "";
-  	var myArray = [];
    	var i = 0;
 	var logLength = localStorage.length-1;
 	var totalHours = 0.0;	
 	
     //process each item and create a list item
     for (i = 0; i <= logLength; i++) {
-
-		//var logitem = myArray[j];
-		var logitem = localStorage.key(i);
-		var values = localStorage.getItem(logitem);
+		var itemKey = localStorage.key(i);
+		var values = localStorage.getItem(itemKey);
 		values = values.split(";");
 		var project = values[0];
 		var hours = values[1];
 		var date = values[2];
 	
-		timeLog += '<li><strong>' + project + '</strong>: ' + hours + ' hours <span class="delete">&times;<span class="hidden" title="Delete Time" id="' + logitem + '">Are you sure you want to delete ' + project + ' from the log?</span></span> <span class="date">' + date + '</span></li>';
+		timeLog += '<li><strong>' + project + '</strong>: ' + hours + ' hours <span class="delete">&times;<span class="hidden" title="Delete Time" id="' + itemKey + '">Are you sure you want to delete ' + project + ' from the log?</span></span> <span class="date">' + date + '</span></li>';
 		
 		totalHours = totalHours + parseInt(hours);
    	}
 
-   	if (timeLog == "") {
+   	if (timeLog == "")
    		timeLog = '<li class="empty">Log Currently Empty</li>';
-   	}
 
 	//display the total number of hours
 	$("section header p span").html(totalHours);

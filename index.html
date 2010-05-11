@@ -42,10 +42,10 @@
 		<button type="button" id="aboutButton">About</button>
 		<h1>monkeeTime</h1>
 		
-		<form id="logForm" method="post">
-			<input type="text" name="project"value="Project Name">
-			<input type="number" name="hours" value="Hours" class="shortField">
-			<input type="text" name="date" value="Date" id="date" class="shortField">
+		<form id="logForm">
+			<input type="text" name="project" value="Project Name" onfocus="if(this.value == 'Project Name') this.value = '';" onblur="if(this.value == '') this.value = 'Project Name';">
+			<input type="number" name="hours" value="Hours" class="shortField" onfocus="if(this.value == 'Hours') this.value = '';" onblur="if(this.value == '') this.value = 'Hours';">
+			<input type="text" name="date" value="Date" id="date" class="shortField" onfocus="if(this.value == 'Date') this.value = '';" onblur="if(this.value == '') this.value = 'Date';">
 			<input type="submit" value="Log Time">
 		</form>
 	</header>
